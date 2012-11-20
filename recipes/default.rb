@@ -44,7 +44,7 @@ when true
   template "/etc/ganglia/gmond.conf" do
     source "gmond_unicast.conf.erb"
     variables( :cluster_name => node[:ganglia][:cluster_name],
-               :host => host )
+               :host => host.join(' ') )
     notifies :restart, "service[ganglia-monitor]"
   end
 when false
